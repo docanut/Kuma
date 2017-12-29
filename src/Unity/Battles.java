@@ -1,15 +1,13 @@
 package Unity;
 
-import java.lang.reflect.Member;
 
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
-import org.sikuli.script.Region;
 
 
-
-public class Battles {
+	public class Battles {
+	//public static boolean AutoBattleCheck=true;
 	public static boolean Ship_Taipo=false;
 	public static int batele_time=0;
 	static float n=0.9f;
@@ -280,13 +278,28 @@ public class Battles {
 			}
 			}
 		
-	
-		
-		
-		
-		
-		
+
 		Actions.BackToBoko();
+	}
+	
+	public static void Click_shi() {
+		//Mevent.Click_expire(Img.shutsugeki, Img.shutsugeki, n);
+		while(true){
+			if (Mevent.Find_Img(Img.shutsugeki, n) ){
+				Mevent.Click_expire(Img.hoku, Img.hoku, n);
+			}else{}
+			if(!Mevent.Find_Img(Img.shutsugeki,n)){
+				Mevent.Delay(3);
+				Mevent.Random_Click(45, 77);
+				System.out.println("進入母港");
+				Mevent.Delay(3);
+			}
+			if (Mevent.Find_Img(Img.ensei_back,n)||Mevent.Find_Img(Img.shutsugeki,n)) {
+				System.out.println("已回母港");
+				break;
+			}
+		}
+		Actions.Expeditionback() ;
 	}
 }
 

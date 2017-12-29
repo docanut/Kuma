@@ -2,10 +2,9 @@ package Unity;
 
 import java.util.Random;
 
-import org.eclipse.swt.internal.win32.TCHITTESTINFO;
+import org.sikuli.basics.Debug;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Match;
-import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 import org.sikuli.script.Screen;
 
@@ -14,38 +13,40 @@ public class Test01 {
 	public static Region ScreenRegion = new Screen();
 	public static Random ran = new Random();
 	public static float n=0.9f;
-	
+	public static void Test() {
+		Mevent.Click_expire(Img.shutsugeki, Img.shutsugeki, n);
+		//Battles.Ro500_Solo();
+		
+	}
 
 	public static void main(String[] args) {
-	    ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
+	    //ImagePath.add("C:\\Users\\poi\\Downloads\\Kuma_win\\src\\Img");
+	   // ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
 	  
-	 
-	  
-	  //Mevent.Find_Img(Img.Ro500check, n);
-	   //Battles.Call_01();
-	   
-		   Expedition.start();
-		
-	
-	
-	    //Battles.Four_SS_Auto23();
-	    
-	   
-	    //System.out.println(Mevent.Find_Img(Img.get_resource, n));
-	    
-		/*
-	   
-			Ensei_status2=ExpeditionAction.Expeditionstatus(2);
-			System.out.println("T2ª¬ºA:"+Ensei_status2);
-		
-			Ensei_status3=ExpeditionAction.Expeditionstatus(3);
-			System.out.println("T3ª¬ºA:"+Ensei_status3);
-		
-			Ensei_status4=ExpeditionAction.Expeditionstatus(4);
-			System.out.println("T4ª¬ºA:"+Ensei_status4);*/
-		//»·©ºÃC¦âÀË¬d
+      Screen s = new Screen();
+      Debug.info("Screen: %s", s);
+      String clazz = "Unity.Kuma";
+      String imgFolder = "/Img";
+      String img = Img.shutsugeki;
+      String inJarFolder = clazz + imgFolder;
+      if (ImagePath.add(inJarFolder)) {
+              Debug.info("Image Folder in jar at: %s", inJarFolder);
+      } else {
+              Debug.error("Image Folder in jar not possible: %s", inJarFolder);
+      }
+     Match target = s.exists(img);
+      if (null == target) {
+              Debug.error("Not found: ", img);
+      } else {
+              Debug.info("Found: %s at %s", img, target);
+            s.hover();
+      }
+      Debug.info("... leaving");
+	  Mevent.Click_expire(Img.shutsugeki, Img.shutsugeki, 0.9f);
 		
   
 	}
+
+	
 
 }

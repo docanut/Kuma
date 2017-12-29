@@ -65,9 +65,9 @@ public class Actions {
 	
 	
 	public static void Expeditionback() {
-		while(Mevent.Find_Img(Img.ensei_back, n))
+		while(Mevent.Find_Img(Img.ensei_back, 0.8f))
 		{
-		Mevent.Click_expire(Img.ensei_back, Img.ensei_back, n);
+		Mevent.Click_expire(Img.ensei_back, Img.ensei_back, 0.8f);
 		Mevent.Delay(5);
 		while(Mevent.Find_Img(Img.shutsugeki, n)){
 			//防指lag 等出擊圖示消失財前進

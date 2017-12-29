@@ -2,12 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/Jna/jna-4.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/Jna/jna-platform-4.5.0.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/elc/sikulix.jar"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/Jna/xnx3-master/xnx3-2.2.jar"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/Jna/swt-4.7-win32-win32-x86_64/swt.jar"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/sikuli-develop.zip"/>
-	<classpathentry kind="lib" path="D:/Program Files/elc/SikuliX-2014-master.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

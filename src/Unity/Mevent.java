@@ -1,7 +1,7 @@
 package Unity;
 import java.util.Random;
 
-import org.eclipse.swt.internal.win32.TCHITTESTINFO;
+
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
@@ -10,7 +10,7 @@ import org.sikuli.script.Screen;
 
 
 public class Mevent {
-	public static Region ScreenRegion = new Screen();
+	public static Region ScreenRegion = new Region(0, 0, 870, 940);
 	public static Random ran = new Random();
 	public static float n=0.9f;
 	
@@ -151,6 +151,18 @@ public class Mevent {
 		
 		Pattern Img_find=new Pattern(img).similar(similar);
 		Match macth=ScreenRegion.exists(Img_find);
+		if (macth!=null) {
+			Print("找到"+img);
+			return true;
+		}else {
+			Print("沒發現"+img);
+			return false;
+		}
+	}
+public static boolean Find_Img_Region(Region reg,String img,float similar) {
+		
+		Pattern Img_find=new Pattern(img).similar(similar);
+		Match macth=reg.exists(Img_find);
 		if (macth!=null) {
 			Print("找到"+img);
 			return true;

@@ -1,14 +1,14 @@
 package Unity;
 public class Quest {
-	static float n=0.97f;
-	public static boolean AutoQuestCheck=true;
+	static float n=0.95f;
+	//public static boolean AutoQuestCheck=true;
 	static String[][] daily_quest={
 	{"敵艦隊を撃破せよ！",Img.battle_01,Img.battle_01_orange,Img.battle_01_green,},
 	{"敵艦隊主力を撃滅せよ！",Img.battle_02,Img.battle_02_orange,Img.battle_02_green,},
 	{"敵艦隊を10回邀撃せよ！",Img.battle_03,Img.battle_03_orange,Img.battle_03_green,},
 	{"敵補給艦を3隻撃沈せよ！",Img.battle_04,Img.battle_04_orange,Img.battle_04_green,},
 	{"南西諸島海域の制海権を握れ",Img.battle_05,Img.battle_05_orange,"Null",},
-	{"南西諸島海域の制海権を握れ",Img.battle_05_02,"Null","Null",},
+	{"南西諸島海域の制海権を握れ",Img.battle_05_02,Img.battle_05_orange_02,"Null",},
 	};
 	
 	public static void IntoQuest() {
@@ -62,16 +62,16 @@ public class Quest {
 
 	public static void Done() {
 		for (int i = 0; i < 4; i++) {
-			if (i==2) {
-				break;
-			}
-			if (Mevent.Find_Img(daily_quest[i][3],n)) {
+			if (i!=2) {
+				if (Mevent.Find_Img(daily_quest[i][3],n)) {
 				Mevent.Click_exists(daily_quest[i][3], Img.quest_close, n);
 				System.out.println("完成:"+daily_quest[i][0]);
 				do {Mevent.Click_expire(Img.quest_close, Img.quest_close, n);
 				Mevent.Delay(1);
 				} while (Mevent.Find_Img(Img.quest_close,n));
 			}
+			}
+			
 		}
 		
 		
@@ -111,7 +111,7 @@ public class Quest {
 		*/
 	}
 	public static void Start(){
-		if (AutoQuestCheck) {
+		if (Unity.Button.Quest) {
 			Start_check();
 		}
 	}
@@ -119,9 +119,9 @@ public class Quest {
 		
 		Actions.Overview_phase();
 		if (Mevent.Find_Img(Img.battle_05_poi,n)) {
-			AutoQuestCheck=false;
+			Unity.Button.Quest=false;
 		}
-			if (AutoQuestCheck) {
+			if (Unity.Button.Quest) {
 			IntoQuest();
 			DailyQuest();
 			Done();
