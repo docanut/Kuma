@@ -43,6 +43,7 @@ public class Img {
 	static String NYUUKYO_yes="NYUUKYO_yes";
 	static String NYUUKYO_no="NYUUKYO_no";
 	static String NYUUKYO_nubmer="NYUUKYO_number";
+	static String nyuukyo_kan="nyuukyo_kan";
 	//
 	static String number2="number2";
 	static String number2_light="nubmer2_light";

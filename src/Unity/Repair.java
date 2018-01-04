@@ -61,7 +61,7 @@ public class Repair {
 				Mevent.Click_exists(Img.NYUUKYO_empty, Img.NYUUKYO_nubmer, n);
 				Mevent.Click_exists(SS[i][1],Img.NYUUKYO_start,n);
 				Mevent.Click_exists(Img.NYUUKYO_start, Img.NYUUKYO_yes, n);
-				Mevent.Click_exists(Img.NYUUKYO_yes, Img.NYUUKYO_empty, n);
+				Mevent.Click_exists(Img.NYUUKYO_yes, Img.nyuukyo_kan, n);
 			}
 		}
 	}
