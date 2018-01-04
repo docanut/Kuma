@@ -145,7 +145,7 @@ public class Button {
 				
 				
 				
-				
+				Repair.Start();
 				Button.setEnabled();
 				Button.Brush_flash.setSelected(false);
 				

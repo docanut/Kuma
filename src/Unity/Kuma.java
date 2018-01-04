@@ -32,12 +32,7 @@ public class Kuma {
 	
 	static JLabel icon_image=new JLabel(imageIcon_Sleep);
 	public static void display(){
-		//ImagePath.setBundlePath("D:\\Program Files\\elc\\Kuma\\src\\Kuma");
-				//ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
-				String clazz = "Unity.Kuma";
-			    String imgFolder = "/Img";
-			    String inJarFolder = clazz + imgFolder;
-			    ImagePath.add(inJarFolder);
+				imagepath();
 			    
 			    
 				JFrame frame=new JFrame("Kuma");
@@ -81,12 +76,8 @@ public class Kuma {
 			     //============================================================================
 			    Button.Events();
 			   
-			    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-		        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-		        int x = (int) rect.getMaxX() - frame.getWidth();
-		        int y = 0;
-		        frame.setLocation(870, y);
+			  
+		        frame.setLocation(870,940);
 			  
 				frame.pack();
 				frame.setVisible(true);
@@ -104,6 +95,15 @@ public class Kuma {
             }
         });
 	}
+	public static void imagepath() {
+		//ImagePath.setBundlePath("D:\\Program Files\\elc\\Kuma\\src\\Kuma");
+		//ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
+		String clazz = "Unity.Kuma";
+	    String imgFolder = "/Img";
+	    String inJarFolder = clazz + imgFolder;
+	    ImagePath.add(inJarFolder);
+	}
+	
 	
 	public static void Change_icon(int x) {
 		if (x==0) {

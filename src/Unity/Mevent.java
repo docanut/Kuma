@@ -1,7 +1,8 @@
 package Unity;
 import java.util.Random;
 
-
+import org.python.antlr.ast.alias;
+import org.sikuli.basics.Debug;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
@@ -46,11 +47,11 @@ public class Mevent {
 
 	
 	public static void Click_expire(String pic_to_click,String pic_to_wait,Float similar){
-		Click_Event(pic_to_click,similar,pic_to_wait,similar,2);
+		Click_Event(pic_to_click,pic_to_wait,similar,2);
 	}
 	public static void Click_exists(String pic_to_click,String pic_to_wait,Float similar){
 		
-		Click_Event(pic_to_click,similar,pic_to_wait,similar,1);
+		Click_Event(pic_to_click,pic_to_wait,similar,1);
 	}
 	public static void Click_Region_Until(Region region ,String pic_to_wait,Float similar_wait ) {
 		do {
@@ -60,59 +61,31 @@ public class Mevent {
 			
 	}
 	
-	public static void Click_Event(String pic_to_click,Float similar_click,String pic_to_wait,Float similar_wait,int pattern) {
+	public static void Click_Event(String pic_to_click,String pic_to_wait,Float similar,int pattern) {
 		
 		Pattern pattern01=null,pattern02=null;
 		Match match=null;
-		switch (pattern) {
-		case 1:
+		boolean findA=true;
 			do {
 				while (match==null) {
-					pattern01=new Pattern(pic_to_click).similar(similar_click);
+					pattern01=new Pattern(pic_to_click).similar(similar);
 					match = ScreenRegion.exists(pattern01);
-					if (match==null) {
-						Print("未發現"+pic_to_click);
-					}else {
+					if (match!=null) {
 						Print("找到"+pic_to_click);
-					}
-					Delay(3);
-				}
-				Random_Click_Region(match);
-			} while (!Find_Img(pic_to_wait,similar_wait));
-			break;
-		case 2:
-			do {
-				while (match==null) {
-					pattern01=new Pattern(pic_to_click).similar(similar_click);
-					match = ScreenRegion.exists(pattern01);
-					if (match==null) {
-						Print("未發現"+pic_to_click);
+						Random_Click_Region(match);
 					}else {
-						Print("找到"+pic_to_click);
+						Print("未發現"+pic_to_click);
+						Delay(3);
 					}
-					Delay(3);
 				}
-				Random_Click_Region(match);
-				//pattern02=new Pattern(pic_to_wait).similar(similar_wait);
+				if (pattern==1) {
+					findA=!Find_Img(pic_to_wait,similar);
+				}else if (pattern==2) {
+					findA=Find_Img(pic_to_wait,similar);
+				}
 				
-			} while (Find_Img(pic_to_wait,similar_click));
-		default:
-			break;
-		}
+			} while (findA);
 		
-		/*
-		Pattern pattern01=new Pattern(pic_to_click).similar(similar_click);
-		Match match01 = ScreenRegion.exists(pattern01);
-		match01.getTopLeft().offset((ran.nextInt(match01.w)), (ran.nextInt(match01.h))).click();
-		
-		Pattern pattern02=new Pattern(pic_to_wait).similar(similar_wait);
-		Match match02 = ScreenRegion.exists(pattern02);
-		match02.getTopLeft().offset((ran.nextInt(match02.w)), (ran.nextInt(match02.h))).click();
-		*/
-		/*尋找圖片->找不到怎麼半? wait?
-		 * 點集(click drog)圖片
-		 * 確認完成
-		 */
 	}
 	public static void Delay(int x) {
 		Print("---等待"+x+"秒");
