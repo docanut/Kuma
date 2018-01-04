@@ -2,6 +2,7 @@ package Unity;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.temporal.TemporalAmount;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -12,9 +13,7 @@ import javax.swing.SwingWorker;
 
 public class Button {
 	public static Boolean Battle=true,Quest=true;
-	public static  JLabel expedition1 = new JLabel("遠征隊伍二");
-	public static  JLabel expedition2 = new JLabel("遠征隊伍三");
-	public static  JLabel expedition3 = new JLabel("遠征隊伍四");
+	public static  JLabel[] expedition = {new JLabel("遠征隊伍二"),new JLabel("遠征隊伍三"),new JLabel("遠征隊伍四")};
 	
 	public static  String[] Expedition = {"未選擇","02長距離航海練習","03警備任務","04對淺警戒任務","05海上護衛任務","06防空射擊演習","11鋁土運輸任務","21北方鼠式運輸","37東京急行","38東京急行(貳)"};
 	
@@ -29,6 +28,8 @@ public class Button {
 	public static  JToggleButton  ExpeditionOnce= new JToggleButton("遠征ㄧ次");
 	public static  JToggleButton  Brush_flash = new JToggleButton("1-1刷兩次");
 	public static  JToggleButton  Short_battle = new JToggleButton("2-3打四次");
+	
+	
 	public static void Events() {
 		
 		 ItemListener Full_Loop = new ItemListener() {
@@ -212,7 +213,9 @@ public class Button {
 					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
 					Unity.Expedition.start();
 					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
-					if (Battle) {Unity.Battles.Four_SS_Auto23();}
+					if (Battle) {Unity.Battles.Four_SS_Auto23();
+					Repair.Start();
+					}
 					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
 					
 				}
@@ -255,39 +258,39 @@ public class Button {
 	public static   void Expedition_trun() {
 		switch (Team2_Ensei.getSelectedItem().toString()) {
 		case "02長距離航海練習":
-			Unity.Expedition.locate2=2;
+			Unity.Expedition.locate[0]=2;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "03警備任務":
-			Unity.Expedition.locate2=3;
+			Unity.Expedition.locate[0]=3;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "04對淺警戒任務":
-			Unity.Expedition.locate2=4;
+			Unity.Expedition.locate[0]=4;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "05海上護衛任務":
-			Unity.Expedition.locate2=5;
+			Unity.Expedition.locate[0]=5;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "06防空射擊演習":
-			Unity.Expedition.locate2=6;
+			Unity.Expedition.locate[0]=6;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "11鋁土運輸任務":
-			Unity.Expedition.locate2=11;
+			Unity.Expedition.locate[0]=11;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "21北方鼠式運輸":
-			Unity.Expedition.locate2=21;
+			Unity.Expedition.locate[0]=21;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "37東京急行":
-			Unity.Expedition.locate2=37;
+			Unity.Expedition.locate[0]=37;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "38東京急行(貳)":
-			Unity.Expedition.locate2=38;
+			Unity.Expedition.locate[0]=38;
 			System.out.println(Team2_Ensei.getSelectedItem().toString());
 			break;
 		case "未選擇":
@@ -299,39 +302,39 @@ public class Button {
 		switch (Team3_Ensei.getSelectedItem().toString()) {
 		case "02長距離航海練習":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=2;
+			Unity.Expedition.locate[1]=2;
 			break;
 		case "03警備任務":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=3;
+			Unity.Expedition.locate[1]=3;
 			break;
 		case "04對淺警戒任務":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=4;
+			Unity.Expedition.locate[1]=4;
 			break;
 		case "05海上護衛任務":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=5;
+			Unity.Expedition.locate[1]=5;
 			break;
 		case "06防空射擊演習":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=6;
+			Unity.Expedition.locate[1]=6;
 			break;
 		case "11鋁土運輸任務":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=11;
+			Unity.Expedition.locate[1]=11;
 			break;
 		case "21北方鼠式運輸":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=21;
+			Unity.Expedition.locate[1]=21;
 			break;
 		case "37東京急行":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=37;
+			Unity.Expedition.locate[1]=37;
 			break;
 		case "38東京急行(貳)":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate3=38;
+			Unity.Expedition.locate[1]=38;
 			break;
 		case "未選擇":
 			System.out.println(Team3_Ensei.getSelectedItem().toString());
@@ -342,39 +345,39 @@ public class Button {
 		switch (Team4_Ensei.getSelectedItem().toString()) {
 		case "02長距離航海練習":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=2;
+			Unity.Expedition.locate[2]=2;
 			break;
 		case "03警備任務":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=3;
+			Unity.Expedition.locate[2]=3;
 			break;
 		case "04對淺警戒任務":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=4;
+			Unity.Expedition.locate[2]=4;
 			break;
 		case "05海上護衛任務":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=5;
+			Unity.Expedition.locate[2]=5;
 			break;
 		case "06防空射擊演習":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=6;
+			Unity.Expedition.locate[2]=6;
 			break;
 		case "11鋁土運輸任務":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=11;
+			Unity.Expedition.locate[2]=11;
 			break;
 		case "21北方鼠式運輸":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=21;
+			Unity.Expedition.locate[2]=21;
 			break;
 		case "37東京急行":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=37;
+			Unity.Expedition.locate[2]=37;
 			break;
 		case "38東京急行(貳)":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
-			Unity.Expedition.locate4=38;
+			Unity.Expedition.locate[2]=38;
 			break;
 		case "未選擇":
 			System.out.println(Team4_Ensei.getSelectedItem().toString());
