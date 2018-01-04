@@ -40,13 +40,16 @@ public class Actions {
 		Mevent.Click_expire(Img.hoku,Img.hoku,n);
 		Teamselect_Hokyu(xx);
 		
+		hokyu_check();
+		
+			
+	}
+	public static void hokyu_check() {
 		do {
 			Mevent.Move_to(135, 160);
 			Mevent.Delay(3);
 			Mevent.Random_Click(135,160);
 		} while (Mevent.Find_Img(Img.houkyuready, n));
-		
-			
 	}
 	public static void Hokyu_side(int xx) {
 

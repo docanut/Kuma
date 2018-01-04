@@ -1,6 +1,9 @@
 package Unity;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -32,55 +35,57 @@ public class Kuma {
 	
 	static JLabel icon_image=new JLabel(imageIcon_Sleep);
 	public static void display(){
-				imagepath();
-			    
-			    
+				setImagePath();
 				JFrame frame=new JFrame("Kuma");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setSize(600, 600);
-				frame.setLayout( new GridLayout());
+				frame.setPreferredSize(new Dimension(265, 670));
+				frame.setLayout( new GridLayout(0, 1, 0, 0));
+				
 				//======================================================================
 				
-				JPanel panel=new JPanel();
-				frame.setLayout( new GridLayout(0, 1, 0, 0));
 				GridBagConstraints gc = new GridBagConstraints(); //layout setting
-				JPanel looppanel =new JPanel();
-				frame.add(panel);
-				panel.add(looppanel);
-				looppanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
-				looppanel.add(new JLabel("迴圈區域"));
-				looppanel.setLayout(new GridBagLayout());
-				looppanel.add(icon_image,gc);
-				
-				 gc.gridx = 0; gc.gridy = 1;looppanel.add(Button.expedition1, gc);
-			     gc.gridx = 1; gc.gridy = 1;looppanel.add(Button.Team2_Ensei, gc);
+				JPanel panel_01 =new JPanel();
+				panel_01.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+				panel_01.add(new JLabel("迴圈區域"));
+				panel_01.setLayout(new GridBagLayout());
+				panel_01.add(icon_image,gc);
+				 gc.gridx = 0; gc.gridy = 1;panel_01.add(Button.expedition[0], gc);
+			     gc.gridx = 1; gc.gridy = 1;panel_01.add(Button.Team2_Ensei, gc);
+			     gc.gridx = 0; gc.gridy = 2;panel_01.add(Button.expedition[1], gc);
+			     gc.gridx = 1; gc.gridy = 2;panel_01.add(Button.Team3_Ensei, gc);
+			     gc.gridx = 0; gc.gridy = 3;panel_01.add(Button.expedition[2], gc);
+			     gc.gridx = 1; gc.gridy = 3;panel_01.add(Button.Team4_Ensei, gc);
+			     gc.gridx = 0;gc.gridy = 4;panel_01.add(Button.BattleCheck, gc);
+			     gc.gridx = 1;gc.gridy = 4;panel_01.add(Button.QuestCheck, gc);
+			     gc.gridx = 1;gc.gridy = 5;panel_01.add(Button.LoopProcessOnOff, gc);
 			     
-			     gc.gridx = 0; gc.gridy = 2;looppanel.add(Button.expedition2, gc);
-			     gc.gridx = 1; gc.gridy = 2;looppanel.add(Button.Team3_Ensei, gc);
-			     
-			     gc.gridx = 0; gc.gridy = 3;looppanel.add(Button.expedition3, gc);
-			     gc.gridx = 1; gc.gridy = 3;looppanel.add(Button.Team4_Ensei, gc);
-				
-			     gc.gridx = 0;gc.gridy = 4;looppanel.add(Button.BattleCheck, gc);
-			     gc.gridx = 1;gc.gridy = 4;looppanel.add(Button.QuestCheck, gc);
-			     gc.gridx = 1;gc.gridy = 5;looppanel.add(Button.LoopProcessOnOff, gc);
-			     
-			 
+			     frame.add(panel_01);
+			     //===========================================================================
+			     GridBagConstraints gc2 = new GridBagConstraints();
 			     JPanel panel2 =new JPanel();
+			     panel2.setLayout(new GridBagLayout());
 			     panel2.setBorder(new TitledBorder("單次執行區域"));
-			     
-			     panel2.add(Button.Brush_flash);
-			     panel2.add(Button.Short_battle);
-			     panel2.add(Button.ExpeditionOnce);
+			     gc2.gridx = 0; gc2.gridy = 0;panel2.add(Button.Brush_flash,gc2);
+			     gc2.gridx = 1; gc2.gridy = 0;panel2.add(Button.Short_battle,gc2);
+			     gc2.gridx = 2; gc2.gridy = 0;panel2.add(Button.ExpeditionOnce,gc2);
+			    
 			     frame.add(panel2);
 			     //============================================================================
 			    Button.Events();
 			   
-			  
-		        frame.setLocation(870,940);
-			  
+			   
+		        
+		        frame.setLocation(870, 0);
 				frame.pack();
 				frame.setVisible(true);
+	}
+	public static void setImagePath() {
+		//ImagePath.setBundlePath("D:\\Program Files\\elc\\Kuma\\src\\Kuma");
+		//ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
+		String clazz = "Unity.Kuma";
+	    String imgFolder = "/Img";
+	    String inJarFolder = clazz + imgFolder;
+	    ImagePath.add(inJarFolder);
 	}
 	  
 	public static void main(String[] args) {
@@ -95,15 +100,6 @@ public class Kuma {
             }
         });
 	}
-	public static void imagepath() {
-		//ImagePath.setBundlePath("D:\\Program Files\\elc\\Kuma\\src\\Kuma");
-		//ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
-		String clazz = "Unity.Kuma";
-	    String imgFolder = "/Img";
-	    String inJarFolder = clazz + imgFolder;
-	    ImagePath.add(inJarFolder);
-	}
-	
 	
 	public static void Change_icon(int x) {
 		if (x==0) {

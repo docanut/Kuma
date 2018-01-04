@@ -21,6 +21,7 @@ public class Repair {
 	public static void Taipa_Check() {
 	Print_SS();
 	Actions.Prophet_phase();
+	
 	for (int i = 0; i < 5; i++) {
 		if (Mevent.Find_Img_Region(Img.Ships(i+1), SS[i][0], n)) {
 			if (Mevent.Find_Img_Region(Img.Ships(i+1), Img.green, n)) {
@@ -60,7 +61,7 @@ public class Repair {
 				Mevent.Click_exists(Img.NYUUKYO_empty, Img.NYUUKYO_nubmer, n);
 				Mevent.Click_exists(SS[i][1],Img.NYUUKYO_start,n);
 				Mevent.Click_exists(Img.NYUUKYO_start, Img.NYUUKYO_yes, n);
-				Mevent.Click_exists(Img.NYUUKYO_yes, Img.NYUUKYO_empty, n);
+				Mevent.Click_exists(Img.NYUUKYO_yes, Img.nyuukyo_kan, n);
 			}
 		}
 	}
