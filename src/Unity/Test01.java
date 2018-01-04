@@ -21,11 +21,11 @@ public class Test01 {
 
 	public static void main(String[] args) {
 	    //ImagePath.add("C:\\Users\\poi\\Downloads\\Kuma_win\\src\\Img");
-	   ImagePath.add("D:\\Program Files\\elc\\Kuma_win\\src\\Img");
+	   ImagePath.add("D:\\Program Files\\elc\\Kumawin\\src\\Img");
 	  
 
 	
-		Repair.Start();
+		Quest.Start_check();
 		
   
 	}

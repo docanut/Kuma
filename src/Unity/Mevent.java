@@ -1,6 +1,7 @@
 package Unity;
 import java.util.Random;
 
+import org.python.antlr.PythonParser.factor_return;
 import org.python.antlr.ast.alias;
 import org.sikuli.basics.Debug;
 import org.sikuli.script.Location;
@@ -66,25 +67,25 @@ public class Mevent {
 		Pattern pattern01=null,pattern02=null;
 		Match match=null;
 		boolean findA=true;
-			do {
-				while (match==null) {
+				while (findA) {
 					pattern01=new Pattern(pic_to_click).similar(similar);
 					match = ScreenRegion.exists(pattern01);
 					if (match!=null) {
 						Print("找到"+pic_to_click);
 						Random_Click_Region(match);
+						if (pattern==1) {
+							findA=!Find_Img(pic_to_wait,similar);
+						}else if (pattern==2) {
+							findA=Find_Img(pic_to_wait,similar);
+						}
 					}else {
 						Print("未發現"+pic_to_click);
 						Delay(3);
 					}
-				}
-				if (pattern==1) {
-					findA=!Find_Img(pic_to_wait,similar);
-				}else if (pattern==2) {
-					findA=Find_Img(pic_to_wait,similar);
+					
+					
 				}
 				
-			} while (findA);
 		
 	}
 	public static void Delay(int x) {
