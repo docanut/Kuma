@@ -1,17 +1,22 @@
 package Unity;
 
-import java.awt.Color;
 
-public class Expedition {
-	public static boolean exp=false;
-	public static int locate[]={0,0,0};
-	public static String status[]={"","",""};
-	static float n=0.9f;
-
-	public static void select(int x){
+public class Expedition{
+	public static boolean start=true;
+	public static int locate2=2;
+	public static int locate3=6;
+	public static int locate4=5;
+	public static String status2="";
+	public static String status3="";
+	public static String status4="";
+	public static float n=0.9f;
+	
+	public static void Select(int x){
+		Mevent.Click_expire(Img.shutsugeki, Img.shutsugeki, n);
+		Mevent.Click_expire(Img.expdition_logo,Img.expdition_logo,n);
 		switch (x) {
 		case 2:
-			Mevent.Click_exists(Img.ensei_02,Img.agree,n);
+			Mevent.Click_exists(Img.ensei_02, Img.agree, n);
 			break;
 		case 3:
 			Mevent.Click_exists(Img.ensei_03,Img.agree,n);
@@ -36,30 +41,22 @@ public class Expedition {
 			Mevent.Click_exists(Img.ensei_21,Img.agree,n);
 			break;
 		case 37:
-			if (Mevent.Find_Img(Img.ensei_37, n)||Mevent.Find_Img(Img.ensei_38, n)) {
-				
-			}else {
-				Mevent.Click_exists(Img.ensei_south,Img.ensei_37,n);
-			}
+			Mevent.Click_exists(Img.ensei_south,Img.ensei_37,n);
 			Mevent.Delay(3);
 			Mevent.Click_exists(Img.ensei_37,Img.agree,n);
 			break;
 		case 38:
-			if (Mevent.Find_Img(Img.ensei_37, n)||Mevent.Find_Img(Img.ensei_38, n)) {
-				
-			}else {
-				Mevent.Click_exists(Img.ensei_south,Img.ensei_37,n);
-			}
+			Mevent.Click_exists(Img.ensei_south,Img.ensei_37,n);
 			Mevent.Delay(3);
 			Mevent.Click_exists(Img.ensei_38,Img.agree,n);
 			break;
 		default:
 			break;
 		}
-		Mevent.Click_expire(Img.agree,Img.agree,n);
+		Mevent.Click_expire(Img.agree, Img.agree, n);
 	}
 	
-	public static void team_Chose(int x) {
+	public static void Team_Chose(int x) {
 		switch (x) {
 		case 3:
 			Mevent.Click_expire(Img.number3_ensei,Img.number3_ensei,n);
@@ -72,90 +69,107 @@ public class Expedition {
 		default:
 			break;
 		}
-		Mevent.Click_expire(Img.ExpeditionStart,Img.ExpeditionStart,n);
+		Mevent.Click_expire(Img.ExpeditionStart, Img.ExpeditionStart, n);
 		
 	}
-	public static void Ensei_Loop() {
+	public static void Loop() {
 		Mevent.Delay(5);
 		
 		
 	}
-	public static void status() {
-		exp=false;
-		for (int i = 2; i < 5; i++) {
-			if (null != Img.Expedition_status(i).exists(Img.black)) {
-				status[i-2]="black";
-			} else if (null != Img.Expedition_status(i).exists(Img.blue)) {
-				status[i-2]="blue";
-			} else if (null != Img.Expedition_status(i).exists(Img.green)) {
-				status[i-2]="green";
-			} else if (null != Img.Expedition_status(i).exists(Img.orange)) {
-				status[i-2]="orange";
+	public static String Expeditionstatus(int x) {
+		switch (x) {
+		case 2:
+			if (null != Img.Expedition_status(2).exists(Img.black)) {
+				return "black";
+			} else if (null != Img.Expedition_status(2).exists(Img.blue)) {
+				return "blue";
+			} else if (null != Img.Expedition_status(2).exists(Img.green)) {
+				return "green";
+			} else if (null != Img.Expedition_status(2).exists(Img.orange)) {
+				return "orange";
 			} else {
-				status[i-2]="bug";
+				return "bug";
 			}
-		}
-		for (int j = 0; j < status.length; j++) {
-			
-			System.out.println(status[j]);
-		}
-		for (int i = 0; i < locate.length; i++) {
-			System.out.println("T"+(i+2)+"ª¬ºA:"+status[i]+locate[i]);
-			if (status[i]=="black"||status[i] == "green" ){
-				exp=true;
+		case 3:
+			if (null != Img.Expedition_status(3).exists(Img.black)) {
+				return "black";
+			} else if (null != Img.Expedition_status(3).exists(Img.blue)) {
+				return "blue";
+			} else if (null != Img.Expedition_status(3).exists(Img.green)) {
+				return "green";
+			} else if (null != Img.Expedition_status(3).exists(Img.orange)) {
+				return "orange";
+			} else {
+				return "bug";
 			}
-		}
-		label_color();
+		case 4:
+			if (null != Img.Expedition_status(4).exists(Img.black)) {
+				return "black";
+			} else if (null != Img.Expedition_status(4).exists(Img.blue)) {
+				return "blue";
+			} else if (null != Img.Expedition_status(4).exists(Img.green)) {
+				return "green";
+			} else if (null != Img.Expedition_status(4).exists(Img.orange)) {
+				return "orange";
+			} else {
+				return "bug";
+			}
+		default:
+			return "bug";
+		}// swich end
 	}//Expeditiontatus end
 	public static void start() {
 		Mevent.Delay(1);
-		System.out.println("»·©º°j°é:");
+		System.out.println("»·©º°j°é:"+start);
 		Actions.Overview_phase();
-		status();
-		while(exp) {
-			Mevent.Delay(5);
-	    	Actions.BackToBoko();
-	    	status();
-				 if (status[0] == "black" ||status[1]=="black"||status[2]=="black"||
-						 status[0] == "green" ||status[1]=="green"||status[2]=="green") {
-					 	Mevent.Click_expire(Img.hoku,Img.hoku,n);
-					 	for (int i = 0; i < locate.length; i++) {
-					 		if (status[i]=="black") {
-					 			Actions.Teamselect_Hokyu(i+2);
-					 			Actions.hokyu_check();
-							}
-			
-				    	System.out.println("¦^Âk"+status[i]);
-					 	}
-			Actions.BackToBoko();
-			Mevent.Click_expire(Img.shutsugeki,Img.shutsugeki,n);
-			Mevent.Click_expire(Img.expdition_logo,Img.expdition_logo,n);
-			  for (int i = 0; i < 3; i++) {
-					if (status[i] == "black" && Expedition.locate[i]!=0) {
-						Expedition.select(Expedition.locate[i]);
-						Expedition.team_Chose(i+2);
-					}
-				
-				}
-			
-					
-				
+			if (locate2 != 0)
+			{
+				status2=Expeditionstatus(2);
+				System.out.println("T2ª¬ºA:"+status2);
 			}
-		 status();
-		}
-	}
-	public static void label_color() {
-		for (int i = 0; i < status.length; i++) {
-			if (status[i]=="black") {
-				Button.expedition[i].setForeground(Color.black);
-			}else if (status[i] =="blue") {
-				Button.expedition[i].setForeground(Color.blue);
-			}else if (status[i]=="green") {
-				Button.expedition[i].setForeground(Color.green);
-			}else if (status[i]=="orange") {
-				Button.expedition[i].setForeground(Color.orange);
+			if (locate3 != 0) 
+			{
+				status3=Expeditionstatus(3);
+				System.out.println("T3ª¬ºA:"+status3);
 			}
-		}
+			if (locate4 !=0)
+			{
+				status4=Expeditionstatus(4);
+				System.out.println("T4ª¬ºA:"+status4);
+			}//»·©ºÃC¦âÀË¬d
+			
+		    if (status2 == "black" ||status2=="green") {
+		    	System.out.println("2¶¤¦^Âk"+status2);
+		    	Mevent.Delay(5);
+		    	Actions.BackToBoko();
+		    	Actions.Hokyu(2);
+		    	Actions.BackToBoko();
+		    	Select(locate2);
+		    	Team_Chose(0);
+		    	Mevent.Delay(5);
+			}
+		    if (status3 == "black" ||status3=="green") {
+		    	System.out.println("3¦^Âk?"+status3);
+		    	Mevent.Delay(5);
+		    	Actions.BackToBoko();
+		    	Actions.Hokyu(3);
+		    	Actions.BackToBoko();
+		    	Select(locate3);
+		    	Team_Chose(3);
+		    	Mevent.Delay(5);
+			}
+		    if (status4 == "black" ||status4=="green") {
+		    	System.out.println("4¦^Âk?"+status4);
+		    	Mevent.Delay(5);
+		    	Actions.BackToBoko();
+		    	Actions.Hokyu(4);
+		    	Actions.BackToBoko();
+		    	Select(locate4);
+		    	Team_Chose(4);
+		    	Mevent.Delay(5);
+			}
+			
 		
 	}
 }
