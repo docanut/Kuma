@@ -1,6 +1,6 @@
 package Unity;
 public class Quest {
-	static float n=0.97f;
+	static float n=0.955f;
 	//public static boolean AutoQuestCheck=true;
 	static String[][] daily_quest={
 	{"敵艦隊を撃破せよ！",Img.battle_01,Img.battle_01_orange,Img.battle_01_green,},

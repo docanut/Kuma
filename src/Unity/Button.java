@@ -69,8 +69,8 @@ public class Button {
 					int state = itemEvent.getStateChange();
 					if (state == ItemEvent.SELECTED) {
 						System.out.println("«ö¤U¨ê°{");
-						Brush_flash();
 						
+						Brush_flash();
 						Button.Brush_flash.setEnabled(true);
 					} else if (state != ItemEvent.SELECTED) {
 						System.out.println("¼u°_¨ê°{");
@@ -144,7 +144,8 @@ public class Button {
 				//L1.Delay(3);
 				
 				
-				
+				Unity.Quest.Start_check();
+				Unity.Quest.n=Unity.Quest.n-.01f;
 				
 				
 				Button.setEnabled();

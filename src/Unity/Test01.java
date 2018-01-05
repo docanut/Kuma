@@ -26,6 +26,7 @@ public class Test01 {
 
 	
 		Quest.Start_check();
+		Quest.n=Quest.n-.01f;
 		
   
 	}
