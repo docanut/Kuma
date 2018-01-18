@@ -86,7 +86,12 @@ public class Actions {
 
 
 	public static void BackToBoko() {
+		
 		while(true){
+			if (Mevent.Find_Img(Img.ensei_back,n)||Mevent.Find_Img(Img.shutsugeki,n)) {
+				System.out.println("¤w¦^¥À´ä");
+				break;
+			}
 			if (Mevent.Find_Img(Img.shutsugeki, n) ){
 				Mevent.Click_expire(Img.hoku, Img.hoku, n);
 			}else{}
@@ -96,13 +101,27 @@ public class Actions {
 				System.out.println("¶i¤J¥À´ä");
 				Mevent.Delay(3);
 			}
-			if (Mevent.Find_Img(Img.ensei_back,n)||Mevent.Find_Img(Img.shutsugeki,n)) {
-				System.out.println("¤w¦^¥À´ä");
-				break;
-			}
+			
 		}
-		 Expeditionback() ;
+		Expeditionback() ;
+		 
 		 
 	}
-	
+	public static boolean checkfourss(boolean x){
+		int start=0,end=0;
+		if(x){
+			start=1;
+			end=5;
+		}else{
+			start=0;
+			end=1;
+		}
+		for (int i = start; i < end; i++) {
+			if(Mevent.Find_Img_Region(Img.Nyuukyo, Repair.SS[i][2], n)){	
+				return false;
+			}
+		}
+		return true;
+		
+	}
 }

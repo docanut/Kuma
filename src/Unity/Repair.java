@@ -1,18 +1,18 @@
 package Unity;
 public class Repair {
-	static float n=0.9f;
+	static float n=0.85f;
 	public static String[][]  SS = {
-				{Img.ro500_1,Img.ro500_2,Img.ro500_3,""},	
-				{Img.i8_1,Img.i8_2,Img.i8_3,""},
-				{Img.i19_1,Img.i19_2,Img.i19_3,""},
-				{Img.i58_1,Img.i58_2,Img.i58_3,""},
-				{Img.i168_1,Img.i168_2,Img.i168_3,""},
+				{Img.ro500_1,Img.ro500_2,Img.ro500_3,"",Img.ro500_p2},	
+				{Img.i8_1,Img.i8_2,Img.i8_3,"",Img.i8_p2},
+				{Img.i19_1,Img.i19_2,Img.i19_3,"",Img.i19_p2},
+				{Img.i58_1,Img.i58_2,Img.i58_3,"",Img.i58_p2},
+				{Img.i168_1,Img.i168_2,Img.i168_3,"",Img.i168_p2},
 						
 		};
 
 	public static void Print_SS(){
 		  for (int i = 0; i < 5; i++) {
-	    	   for (int j = 0; j < 4; j++) {
+	    	   for (int j = 0; j < 5; j++) {
 	    		  System.out.print(SS[i][j]+",");
 	   		}
 	    	   System.out.println("");
@@ -23,7 +23,7 @@ public class Repair {
 	Actions.Prophet_phase();
 	
 	for (int i = 0; i < 5; i++) {
-		if (Mevent.Find_Img_Region(Img.Ships(i+1), SS[i][0], n)) {
+		if (Mevent.Find_Img_Region(Img.Ships(i+1), SS[i][0], n)||Mevent.Find_Img_Region(Img.Ships(i+1), SS[i][4], n)) {
 			if (Mevent.Find_Img_Region(Img.Ships(i+1), Img.green, n)) {
 				SS[i][3]="false";
 			}
@@ -35,8 +35,9 @@ public class Repair {
 	}
 	Actions.Overview_phase();
 	for (int i = 0; i < 5; i++) {
-		if(Mevent.Find_Img(SS[i][2], n)){
+		if(Mevent.Find_Img_Region(Img.Nyuukyo, SS[i][2], n)){
 			SS[i][3]="flase";
+			
 		}
 			
 	}
@@ -61,7 +62,7 @@ public class Repair {
 				Mevent.Click_exists(Img.NYUUKYO_empty, Img.NYUUKYO_nubmer, n);
 				Mevent.Click_exists(SS[i][1],Img.NYUUKYO_start,n);
 				Mevent.Click_exists(Img.NYUUKYO_start, Img.NYUUKYO_yes, n);
-				Mevent.Click_exists(Img.NYUUKYO_yes, Img.nyuukyo_kan, n);
+				Mevent.Click_expire(Img.NYUUKYO_yes, Img.nyuukyo_kan, n);
 			}
 		}
 	}

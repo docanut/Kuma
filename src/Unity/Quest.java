@@ -1,6 +1,6 @@
 package Unity;
 public class Quest {
-	static float n=0.955f;
+	static float n=0.93f;
 	//public static boolean AutoQuestCheck=true;
 	static String[][] daily_quest={
 	{"敵艦隊を撃破せよ！",Img.battle_01,Img.battle_01_orange,Img.battle_01_green,},
@@ -20,10 +20,10 @@ public class Quest {
 	
 	public static void Check() {
 		for (int i = 0; i < 6; i++) {
-			if (Mevent.Find_Img(daily_quest[i][1],n)&& Mevent.Find_Img(Img.two_solt,n)) {
+			if (Mevent.Find_Img(daily_quest[i][1],n) && Mevent.Find_Img(Img.two_solt,n)) {
 				Mevent.Click_exists(daily_quest[i][1], daily_quest[i][2], n);
 				System.out.println("執行:"+daily_quest[i][0]);
-				if (i==0 || i==1 || i==5) {
+				if (i==0 || i==1 ) {
 					break;
 				}
 			}

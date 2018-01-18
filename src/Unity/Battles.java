@@ -147,24 +147,26 @@ import org.sikuli.script.Pattern;
 	}
 	public static void Night_battle(int night) {
 		while (true) {
-		if (Mevent.Find_Img(Img.battle_selt, n)) {
-			if (batele_time >= night) {
-				System.out.println("準備進入夜戰");
-				Mevent.Click_expire(Img.nightwar, Img.nightwar, n);
-				System.out.println("已進入夜戰");
-				break;
-			}else {
-				System.out.println("繼續追擊");
-				Mevent.Click_expire(Img.chase,Img.chase,n);
-				System.out.println("追擊");
-				break;
-				
+			if (Mevent.Find_Img(Img.battle_selt, (n+0.05f))) {
+				if (batele_time >= night) {
+					System.out.println("準備進入夜戰");
+					Mevent.Click_expire(Img.nightwar, Img.nightwar, n);
+					System.out.println("已進入夜戰");
+					break;
+				}
+				else 
+				 {
+					System.out.println("繼續追擊");
+					Mevent.Click_expire(Img.chase,Img.chase,n);
+					System.out.println("追擊");
+					break;
+				}
 			}
-		}else if (Mevent.Find_Img(Img.battle_report, n)) {
-			break;
-		}else{
-			System.out.println("尚未結束戰鬥");
-		}
+			if (Mevent.Find_Img(Img.battle_report, n)) {
+				break;
+			}else{
+				System.out.println("尚未結束戰鬥");
+			}
 		}//while lopp end
 		
 		Battle_report();
@@ -241,7 +243,7 @@ import org.sikuli.script.Pattern;
 		ShipStatusCheck();
 		Actions.Overview_phase();
 		
-		if (!Mevent.Find_Img(Img.ro500_3, n)) {
+		if (Actions.checkfourss(false)) {
 				if (Ship_Taipo==false) {
 			Quest.Start();
 			Actions.Hokyu(1);
@@ -267,7 +269,7 @@ import org.sikuli.script.Pattern;
 			ShipStatusCheck();
 			Actions.Overview_phase();
 			
-			if (!Mevent.Find_Img(Img.ro500_3, n)) {
+			if (Actions.checkfourss(true)) {
 					if (Ship_Taipo==false) {
 				Quest.Start();
 				Actions.Hokyu(1);

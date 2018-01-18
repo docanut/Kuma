@@ -21,12 +21,9 @@ public class Test01 {
 
 	public static void main(String[] args) {
 	    //ImagePath.add("C:\\Users\\poi\\Downloads\\Kuma_win\\src\\Img");
-	   ImagePath.add("D:\\Program Files\\elc\\Kumawin\\src\\Img");
-	  
+	   Kuma.setImagePath();  
 
-	
-		Quest.Start_check();
-		Quest.n=Quest.n-.01f;
+	Quest.Check();
 		
   
 	}

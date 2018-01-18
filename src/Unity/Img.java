@@ -181,6 +181,13 @@ public class Img {
 	static String ro500_2="ro500_2";
 	static String ro500_3="ro500_3";
 	static String U511_1="U511_1";
+	
+	static String ro500_p2="ro500_p2";
+	static String i8_p2="i8_p2";
+	static String i19_p2="i19_p2";
+	static String i58_p2="i58_p2";
+	static String i168_p2="i168_p2";
+	
 	static String Ro500check="Ro500check";
 	
 
@@ -231,10 +238,10 @@ public class Img {
 	//
 	public static Region Ships(int x){
 		int xcoordinate,ycoordinate,width,length;
-		xcoordinate=-7;
-		width=420;
+		xcoordinate=-15;
+		width=430;
 		ycoordinate=+36;
-		length=24;
+		length=26;
 		switch (x) {
 		case 1:
 			return new Region(20+xcoordinate, 620+ycoordinate, width, length);
@@ -279,7 +286,7 @@ public class Img {
 		}
 	}
 
-	public static Region Nyuukyo=new Region(275, 710, 240, 110);
+	public static Region Nyuukyo=new Region(265, 700, 250, 120);
 	public static Region FullShipStatus=new Region(205, 655, 225, 207);
 	public static Region Home_Page=new Region(10,40,70,60);
 	//10,40-80,100
