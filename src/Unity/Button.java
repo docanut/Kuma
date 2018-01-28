@@ -144,7 +144,7 @@ public class Button {
 				//L1.Delay(3);
 				
 				
-				Unity.Quest.Start_check();
+				//Unity.Quest.Start_check();
 				Unity.Quest.n=Unity.Quest.n-.01f;
 				
 				
@@ -187,7 +187,7 @@ public class Button {
 				// TODO Auto-generated method stub
 				Battles.Ro500_Solo();
 				Battles.Four_SS_Auto23();
-				Repair.Start();
+				Ships.Start();
 				Button.setEnabled();
 				Button.Short_battle.setSelected(false);
 				// TODO Auto-generated method stub
@@ -215,7 +215,7 @@ public class Button {
 					Unity.Expedition.start();
 					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
 					if (Battle) {Unity.Battles.Four_SS_Auto23();
-					Repair.Start();
+					Ships.Start();
 					}
 					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
 					

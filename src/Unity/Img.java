@@ -127,7 +127,8 @@ public class Img {
 	static String number3_ensei_light="number3_ensei_light";
 	static String number4_ensei="number4_ensei";
 	static String number4_ensei_light="number4_ensei_light";
-
+	
+	/*
 	static String battle_01="battle_01";
 	static String battle_01_orange="battle_01_orange";
 	static String battle_01_green="battle_01_green";
@@ -150,13 +151,53 @@ public class Img {
 	static String battle_04_poi_green="battle_04_poi_green";
 	static String battle_04_green_2="battle_04_green_2";
 	
-	
-	
+
 	static String battle_05="battle_05";
 	static String battle_05_02="battle_05_02";
 	static String battle_05_orange="battle_05_orange";
 	static String battle_05_orange_02="battle_05_orange_02";
 	static String battle_05_poi="battle_05_poi";
+	
+	static String battle_06="expedition_three_times";
+	static String battle_06_orange="expedition_three_times_orange";
+	static String battle_07="repair_three_time";
+	static String battle_07_orange="repair_three_time_orange";
+	*/
+
+	static String quest01b="quest01b";
+	static String quest01o="quest01o";
+	static String quest01g="quest01g";
+
+	static String quest02b="quest02b";
+	static String quest02o="quest02o";
+	static String quest02g="quest02g";
+	
+	static String quest03b="quest04b";
+	static String quest03o="quest04o";
+	static String quest03g="quest04g";
+	
+	static String quest05b="quest05b";
+	static String quest05o="quest05o";
+	static String quest05g="quest05g";
+	
+	static String quest06b="quest06b";
+	static String quest06o="quest06o";
+	static String quest06g="quest06g";
+	
+	static String quest07b="quest07b";
+	static String quest07o="quest07o";
+	static String quest07g="quest07g";
+	
+	static String quest08b="quest08b";
+	static String quest08o="quest08o";
+	static String quest08g="quest08g";
+	
+	static String quest09b="quest09b";
+	static String quest09o="quest09o";
+	static String quest09g="quest09g";
+
+	
+	
 	static String two_solt="two_solt";
 	
 	static String quest_345="quest_345";
@@ -269,26 +310,40 @@ public class Img {
 	}
 	public static Region Expedition_status(int team_number){
 		int xcoordinate,ycoordinate,width,length;
-		xcoordinate=4;
-		width=49;
+		xcoordinate=3;
+		width=50;
 		ycoordinate=9;
-		length=12;
+		length=13;
 		switch (team_number) {
 		case 2:
 			return new Region(450+xcoordinate  , 851+ycoordinate , width, length);
 		case 3:
-			return new Region(450+xcoordinate  , 877+ycoordinate , width, length);
+			return new Region(450+xcoordinate  , 879+ycoordinate , width, length);
 		case 4:
-			return new Region(450+xcoordinate  , 902+ycoordinate , width, length);
+			return new Region(450+xcoordinate  , 910+ycoordinate , width, length);
 
 		default:
 			return new Region(0,0,5,5);
 		}
 	}
 
-	public static Region Nyuukyo=new Region(265, 700, 250, 120);
+	public static Region Nyuukyo=new Region(265, 710, 250, 120);
 	public static Region FullShipStatus=new Region(205, 655, 225, 207);
 	public static Region Home_Page=new Region(10,40,70,60);
 	//10,40-80,100
+	public static void showRegion() {
+		for (int i = 1; i < 7; i++) {
+			Ships(i).highlight();
+		}
+		
+	}
+	public static void showRegionoverview() {
+		for (int i = 2; i < 5; i++) {
+			Expedition_status(i).highlight();
+		}
+		
+		
+		//Nyuukyo.highlight();
+	}
 
 }

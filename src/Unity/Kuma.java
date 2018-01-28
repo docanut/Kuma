@@ -72,6 +72,7 @@ public class Kuma {
 			     frame.add(panel2);
 			     //============================================================================
 			    Button.Events();
+			    Quest.initialize();
 			   
 			   
 		        

@@ -117,7 +117,7 @@ public class Actions {
 			end=1;
 		}
 		for (int i = start; i < end; i++) {
-			if(Mevent.Find_Img_Region(Img.Nyuukyo, Repair.SS[i][2], n)){	
+			if(Mevent.Find_Img_Region(Img.Nyuukyo, Ships.SS[i][2], n)){	
 				return false;
 			}
 		}
