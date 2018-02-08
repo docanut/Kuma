@@ -3,6 +3,7 @@ package Unity;
 import java.awt.Desktop.Action;
 import java.util.Random;
 
+import org.python.antlr.PythonParser.if_stmt_return;
 import org.sikuli.basics.Debug;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Match;
@@ -23,16 +24,10 @@ public class Test01 {
 	public static void main(String[] args) {
 	    //ImagePath.add("C:\\Users\\poi\\Downloads\\Kuma_win\\src\\Img");
 	   Kuma.setImagePath();  
-	   /*
 	
-	
-	Quest.Select();*/
-	   Quest.initialize();
-	  
-	   Quest.Complete();
-	   Quest.Select();
   
 	}
+	
 
 	
 

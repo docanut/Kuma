@@ -12,7 +12,7 @@ import javax.swing.SwingWorker;
 
 
 public class Button {
-	public static Boolean Battle=true,Quest=true;
+	public static Boolean Battle=true,Quest=true,Creep=false;
 	public static  JLabel[] expedition = {new JLabel("遠征隊伍二"),new JLabel("遠征隊伍三"),new JLabel("遠征隊伍四")};
 	
 	public static  String[] Expedition = {"未選擇","02長距離航海練習","03警備任務","04對淺警戒任務","05海上護衛任務","06防空射擊演習","11鋁土運輸任務","21北方鼠式運輸","37東京急行","38東京急行(貳)"};
@@ -23,11 +23,14 @@ public class Button {
 	
 	public static  JCheckBox	QuestCheck=new JCheckBox("不解任務");
 	public static  JCheckBox	BattleCheck=new JCheckBox("不戰鬥");
+	public static  JCheckBox	Autocreep=new JCheckBox("自動偷油");
 	
 	public static  JToggleButton  LoopProcessOnOff = new JToggleButton("整體回圈運作");
 	public static  JToggleButton  ExpeditionOnce= new JToggleButton("遠征ㄧ次");
 	public static  JToggleButton  Brush_flash = new JToggleButton("1-1刷兩次");
 	public static  JToggleButton  Short_battle = new JToggleButton("2-3打四次");
+	public static  JToggleButton  Creepy = new JToggleButton("偷油一輪");
+	public static  JToggleButton  QuestinItialize = new JToggleButton("重置任務");
 	
 	
 	public static void Events() {
@@ -127,10 +130,79 @@ public class Button {
 			Button.BattleCheck.addItemListener(BattleCheck);
 		
 		//=========================================================
+			ItemListener Creepy_once = new ItemListener() {
+				public void itemStateChanged(ItemEvent itemEvent) {
+					int state = itemEvent.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						System.out.println("按下偷油");
+						Creepy();
+					} else if (state != ItemEvent.SELECTED) {
+						System.out.println("彈起偷油");
+					}
+				}
+			};
+			Button.Creepy.addItemListener(Creepy_once);
+			
+		//=========================================================
+			ItemListener AutoCreep = new ItemListener() {
+				public void itemStateChanged(ItemEvent itemEvent) {
+					int state = itemEvent.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						System.out.println("會偷油");
+						Creep=true;
+						
+						//Button.Brush_flash.setEnabled(true);
+					} else if (state != ItemEvent.SELECTED) {
+						System.out.println("不偷油");
+						Creep=false;
+						
+					}
+				}
+			};
+			Button.Autocreep.addItemListener(AutoCreep);
+		
+		//=========================================================
+			//=========================================================
+			ItemListener questInitialize = new ItemListener() {
+				public void itemStateChanged(ItemEvent itemEvent) {
+					int state = itemEvent.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						System.out.println("任務重置");
+						
+						Quest_Initialize();
+						Button.Brush_flash.setEnabled(true);
+					} else if (state != ItemEvent.SELECTED) {
+						System.out.println("重置任務完成");
+						
+					}
+				}
+			};
+			
+			Button.QuestinItialize.addItemListener(questInitialize);
 		
 	}
 	
+	public static void Creepy() {
 
+		SwingWorker<Void, Void> Creepy_work = new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				System.out.println("偷油");
+				Button.setDisabled();
+				// TODO Auto-generated method stub
+				modo.Creepy();
+				Button.setEnabled();
+				Button.Creepy.setSelected(false);
+				
+				
+				return null;
+			}
+		};
+		Creepy_work.execute();
+
+	}
+	
 	public static void Brush_flash() {
 
 		SwingWorker<Void, Void> Brush_flash_work = new SwingWorker<Void, Void>() {
@@ -158,6 +230,32 @@ public class Button {
 		Brush_flash_work.execute();
 
 	}
+	public static void Quest_Initialize() {
+
+		SwingWorker<Void, Void> Quest_Initialize_work = new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				
+				Button.setDisabled();
+				// TODO Auto-generated method stub
+				//Attacks.Solo1_1();
+				//L1.Delay(3);
+				
+				Unity.Quest.initialize();
+				//Unity.Quest.Start_check();
+				
+				
+				Button.setEnabled();
+				Button.QuestinItialize.setSelected(false);
+				
+				
+				return null;
+			}
+		};
+		Quest_Initialize_work.execute();
+
+	}
 	private static void ExpeditionOnce() {
 		SwingWorker<Void, Void> ExpeditionOnce_work = new SwingWorker<Void, Void>() {
 			@Override
@@ -165,8 +263,7 @@ public class Button {
 				System.out.println("遠征開始執行一次");
 				Button.setDisabled();
 				// TODO Auto-generated method stub
-				Button.Expedition_trun();
-				Unity.Expedition.start();
+				modo.ExpeditionOnce();
 				Button.setEnabled();
 				Button.ExpeditionOnce.setSelected(false);
 				return null;
@@ -185,9 +282,7 @@ public class Button {
 				
 				Button.setDisabled();
 				// TODO Auto-generated method stub
-				Battles.Ro500_Solo();
-				Battles.Four_SS_Auto23();
-				Ships.Start();
+				modo.short_battle();
 				Button.setEnabled();
 				Button.Short_battle.setSelected(false);
 				// TODO Auto-generated method stub
@@ -206,20 +301,7 @@ public class Button {
 				System.out.println("開始");
 				// TODO Auto-generated method stub
 				Button.setDisabled();
-				while (true) {
-					Expedition_trun();
-					Unity.Expedition.start();
-					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
-					if (Battle) {Unity.Battles.Ro500_Solo();}
-					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
-					Unity.Expedition.start();
-					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
-					if (Battle) {Unity.Battles.Four_SS_Auto23();
-					Ships.Start();
-					}
-					if (Button.LoopProcessOnOff.isSelected()==false) {break;}
-					
-				}
+				modo.Loop();
 				Button.setEnabled();
 				Button.Short_battle.setSelected(false);
 				// TODO Auto-generated method stub
@@ -229,6 +311,7 @@ public class Button {
 		Full_Loop_work.execute();
 
 	}
+	
 	
 	public static void setDisabled() {
 		Kuma.Change_icon(1);
@@ -242,8 +325,11 @@ public class Button {
 		//LoopProcessOnOff.setEnabled(false);
 		QuestCheck.setEnabled(false);
 		BattleCheck.setEnabled(false);
+		Creepy.setEnabled(false);
+		QuestinItialize.setEnabled(false);
 	}
 	public static void setEnabled(){
+		Mevent.Delay(1);
 		Kuma.Change_icon(0);
 		ExpeditionOnce.setEnabled(true);
 		Brush_flash.setEnabled(true);
@@ -254,7 +340,8 @@ public class Button {
 		//LoopProcessOnOff.setEnabled(true);
 		QuestCheck.setEnabled(true);
 		BattleCheck.setEnabled(true);
-		
+		Creepy.setEnabled(true);
+		QuestinItialize.setEnabled(true);
 	}
 	public static   void Expedition_trun() {
 		switch (Team2_Ensei.getSelectedItem().toString()) {

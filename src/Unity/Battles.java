@@ -90,7 +90,7 @@ import org.sikuli.script.Pattern;
 		}
 		Location location=new Location(xx, yy);
 		Mevent.DragDrop(location, Img.quest);
-		
+		Mevent.Delay(3);
 	}
     public static void Call_01() {
 	Mevent.Click_expire(Img.hensei, Img.hensei, n);
@@ -303,5 +303,39 @@ import org.sikuli.script.Pattern;
 		}
 		Actions.Expeditionback() ;
 	}
-}
+
+	public static void SS_solo23() {
+		Actions.BackToBoko();
+		Call_01();
+		Actions.Hokyu_side(1);
+		for (int i = 0; i < 5; i++) {
+			batele_time=-5;
+				Actions.BackToBoko();
+				Call_01();
+				for (int j = 0; j < (i); j++) {
+					 Battles.Kick_Ship(1);	
+				}
+			  
+			   Battles.Keep_FlagShip();
+			   Actions.BackToBoko();
+			   ShipStatusCheck();
+				Actions.Overview_phase();
+				if (!Mevent.Find_Img_Region(Img.Nyuukyo, Ships.SS[i][2], n)) {
+						if (Ship_Taipo==false) {
+					
+					Actions.BackToBoko();
+					Goto23();
+					Battle_phase_Solo();
+				}//First end
+				}
+			   
+			
+		}
+		
+
+		Actions.BackToBoko();
+	}
+	
+	
+	}
 

@@ -57,7 +57,9 @@ public class Kuma {
 			     gc.gridx = 1; gc.gridy = 3;panel_01.add(Button.Team4_Ensei, gc);
 			     gc.gridx = 0;gc.gridy = 4;panel_01.add(Button.BattleCheck, gc);
 			     gc.gridx = 1;gc.gridy = 4;panel_01.add(Button.QuestCheck, gc);
+			     //gc.gridx = 0;gc.gridy = 5;panel_01.add(Button.Autocreep, gc);
 			     gc.gridx = 1;gc.gridy = 5;panel_01.add(Button.LoopProcessOnOff, gc);
+			     
 			     
 			     frame.add(panel_01);
 			     //===========================================================================
@@ -67,7 +69,9 @@ public class Kuma {
 			     panel2.setBorder(new TitledBorder("單次執行區域"));
 			     gc2.gridx = 0; gc2.gridy = 0;panel2.add(Button.Brush_flash,gc2);
 			     gc2.gridx = 1; gc2.gridy = 0;panel2.add(Button.Short_battle,gc2);
-			     gc2.gridx = 2; gc2.gridy = 0;panel2.add(Button.ExpeditionOnce,gc2);
+			     gc2.gridx = 0; gc2.gridy = 1;panel2.add(Button.ExpeditionOnce,gc2);
+			     gc2.gridx = 1; gc2.gridy = 1;panel2.add(Button.Creepy,gc2);
+			     gc2.gridx = 0; gc2.gridy = 2;panel2.add(Button.QuestinItialize, gc2);
 			    
 			     frame.add(panel2);
 			     //============================================================================

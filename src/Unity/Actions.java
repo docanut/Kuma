@@ -53,7 +53,7 @@ public class Actions {
 	}
 	public static void Hokyu_side(int xx) {
 
-		Mevent.Click_expire(Img.hoku_side, Img.hoku_side, n);
+		Mevent.Click_exists(Img.hoku_side, Img.hoku_side_light, 0.85f);
 		Teamselect_Hokyu(xx);
 		
 		//Mevent.Random_Click(135, 160);
