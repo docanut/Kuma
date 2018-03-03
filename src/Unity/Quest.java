@@ -1,4 +1,7 @@
 package Unity;
+
+import org.python.antlr.PythonParser.elif_clause_return;
+
 public class Quest {
 	static float n=0.95f;
 	static boolean start=true;
@@ -91,23 +94,27 @@ public class Quest {
 		}
 	}
 	public static boolean Checkquestcomplete() {
-		Button.QuestCheck.setSelected(true);
-		return (Quest.quset[4].isselected==false)||(Quest.quset[6].isselected==false)|| (Quest.quset[8].isselected==false);
+		
+		return (Quest.quset[4].isselected==true)&&(Quest.quset[6].isselected==true)&& (Quest.quset[8].isselected==true);
 		  
 	}
 
 	public static void Start(){
-		if (Button.Quest ) 
+		if (Button.Quest) 
 		{
-			if (Checkquestcomplete()) 
-			{
+			
 			IntoQuest();
 			DailyQuest();
 			Complete();
 			Select();
 			Actions.BackToBoko();
-			}
+			if (Quest.Checkquestcomplete()) {
+				Button.QuestCheck.setSelected(true);
+					//Button.Battle=false;
+				}
 			
+		}else {
+			System.out.println("Boolean of Quest is :"+Button.Quest);
 		}
 	}
 

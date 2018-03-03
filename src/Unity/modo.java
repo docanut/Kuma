@@ -12,10 +12,6 @@ public class modo {
 			if (Button.Battle) 
 				{
 				Unity.Battles.Ro500_Solo();
-				}else if 
-				(Button.Creep) 
-				{
-					Creepy();
 				}
 			if (Button.LoopProcessOnOff.isSelected()==false)
 				{
@@ -35,11 +31,9 @@ public class modo {
 				{
 				break;
 				}
-			if (Button.Creep) {
-				if (Quest.Checkquestcomplete()) {
-					Button.Battle=false;
-				}
-			}
+		
+			
+			
 		}
 	}
 	public static void short_battle() {

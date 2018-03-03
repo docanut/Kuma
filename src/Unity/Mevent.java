@@ -150,4 +150,12 @@ public static boolean Find_Img_Region(Region reg,String img,float similar) {
 			try {ScreenRegion.dragDrop(lo, pattern);} 
 			catch (Exception e) {}
 	}
+public static void FindNforImage(String Igm) {
+	   while (!Mevent.Find_Img(Igm, n)) {
+			n=n*0.98f;
+			System.out.println(n);
+			
+		}
+	
+}
 }

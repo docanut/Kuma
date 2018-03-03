@@ -27,10 +27,14 @@ public class Button {
 	
 	public static  JToggleButton  LoopProcessOnOff = new JToggleButton("整體回圈運作");
 	public static  JToggleButton  ExpeditionOnce= new JToggleButton("遠征ㄧ次");
-	public static  JToggleButton  Brush_flash = new JToggleButton("1-1刷兩次");
+	public static  JToggleButton  Brush_flash = new JToggleButton("二閃");
+	public static  JToggleButton  Brush_flash2 = new JToggleButton("無線1-5-1");
 	public static  JToggleButton  Short_battle = new JToggleButton("2-3打四次");
 	public static  JToggleButton  Creepy = new JToggleButton("偷油一輪");
 	public static  JToggleButton  QuestinItialize = new JToggleButton("重置任務");
+	public static  JToggleButton  Attack32 = new JToggleButton("3-2一次");
+	public static  JToggleButton  Attack33 = new JToggleButton("3-3一次");
+	public static  JToggleButton  Attack42 = new JToggleButton("4-2一次");
 	
 	
 	public static void Events() {
@@ -179,9 +183,96 @@ public class Button {
 			};
 			
 			Button.QuestinItialize.addItemListener(questInitialize);
+			//=========================================================
+		     ItemListener Brush_flash2 = new ItemListener() {
+					public void itemStateChanged(ItemEvent itemEvent) {
+						int state = itemEvent.getStateChange();
+						if (state == ItemEvent.SELECTED) {
+							System.out.println("按下刷151");
+							
+							Brush_151();
+							Button.Brush_flash2.setEnabled(true);
+						} else if (state != ItemEvent.SELECTED) {
+							System.out.println("彈起刷151");
+						}
+					}
+				};
+				
+				Button.Brush_flash2.addItemListener(Brush_flash2);
+				//=========================================================
+			     ItemListener Attack33 = new ItemListener() {
+						public void itemStateChanged(ItemEvent itemEvent) {
+							int state = itemEvent.getStateChange();
+							if (state == ItemEvent.SELECTED) {
+								System.out.println("3-3");
+								
+								Attack33();
+								Button.Attack33.setEnabled(true);
+							} else if (state != ItemEvent.SELECTED) {
+								System.out.println("彈起3-3");
+							}
+						}
+					};
+					
+					Button.Attack33.addItemListener(Attack33);
+					//=========================================================
+				     ItemListener Attack42 = new ItemListener() {
+							public void itemStateChanged(ItemEvent itemEvent) {
+								int state = itemEvent.getStateChange();
+								if (state == ItemEvent.SELECTED) {
+									System.out.println("按下4-2");
+									Attack42();
+									
+									Button.Attack42.setEnabled(true);
+								} else if (state != ItemEvent.SELECTED) {
+									System.out.println("彈起4-2");
+								}
+							}
+						};
+						
+						Button.Attack42.addItemListener(Attack42);
 		
 	}
-	
+	public static void Attack33() {
+
+		SwingWorker<Void, Void> Attack33 = new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				System.out.println("偷油");
+				Button.setDisabled();
+				// TODO Auto-generated method stub
+				Unity.Battles.auto33();
+				Button.setEnabled();
+				Button.Attack33.setSelected(false);
+				
+				
+				return null;
+			}
+		};
+		Attack33.execute();
+
+	}
+	public static void Attack42() {
+
+		SwingWorker<Void, Void> Attack42 = new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				System.out.println("偷油");
+				Button.setDisabled();
+				// TODO Auto-generated method stub
+				Unity.Battles.auto42();
+				Button.setEnabled();
+				Button.Attack42.setSelected(false);
+				
+				
+				return null;
+			}
+		};
+		Attack42.execute();
+
+	}
 	public static void Creepy() {
 
 		SwingWorker<Void, Void> Creepy_work = new SwingWorker<Void, Void>() {
@@ -217,9 +308,7 @@ public class Button {
 				
 				
 				//Unity.Quest.Start_check();
-				Unity.Quest.n=Unity.Quest.n-.01f;
-				
-				
+				Unity.Battles.Brush_flash();
 				Button.setEnabled();
 				Button.Brush_flash.setSelected(false);
 				
@@ -228,6 +317,31 @@ public class Button {
 			}
 		};
 		Brush_flash_work.execute();
+
+	}
+	public static void Brush_151() {
+
+		SwingWorker<Void, Void> Brush_151 = new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				System.out.println("刷閃");
+				Button.setDisabled();
+				// TODO Auto-generated method stub
+				//Attacks.Solo1_1();
+				//L1.Delay(3);
+				
+				
+				//Unity.Quest.Start_check();
+				Unity.Battles.unlimited151();
+				Button.setEnabled();
+				Button.Brush_flash2.setSelected(false);
+				
+				
+				return null;
+			}
+		};
+		Brush_151.execute();
 
 	}
 	public static void Quest_Initialize() {
@@ -317,6 +431,7 @@ public class Button {
 		Kuma.Change_icon(1);
 		ExpeditionOnce.setEnabled(false);
 		Brush_flash.setEnabled(false);
+		Brush_flash2.setEnabled(false);
 		Short_battle.setEnabled(false);
 		Team2_Ensei.setEnabled(false);
 		Team3_Ensei.setEnabled(false);
@@ -327,12 +442,16 @@ public class Button {
 		BattleCheck.setEnabled(false);
 		Creepy.setEnabled(false);
 		QuestinItialize.setEnabled(false);
+		Attack32.setEnabled(false);
+		Attack33.setEnabled(false);
+		Attack42.setEnabled(false);
 	}
 	public static void setEnabled(){
 		Mevent.Delay(1);
 		Kuma.Change_icon(0);
 		ExpeditionOnce.setEnabled(true);
 		Brush_flash.setEnabled(true);
+		Brush_flash2.setEnabled(true);
 		Short_battle.setEnabled(true);
 		Team2_Ensei.setEnabled(true);
 		Team3_Ensei.setEnabled(true);
@@ -342,6 +461,9 @@ public class Button {
 		BattleCheck.setEnabled(true);
 		Creepy.setEnabled(true);
 		QuestinItialize.setEnabled(true);
+		Attack32.setEnabled(true);
+		Attack33.setEnabled(true);
+		Attack42.setEnabled(true);
 	}
 	public static   void Expedition_trun() {
 		switch (Team2_Ensei.getSelectedItem().toString()) {

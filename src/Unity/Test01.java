@@ -25,7 +25,10 @@ public class Test01 {
 	    //ImagePath.add("C:\\Users\\poi\\Downloads\\Kuma_win\\src\\Img");
 	   Kuma.setImagePath();  
 	
-  
+	 Battles.unlimited151();
+	 //Battles.Four_SS_Auto23();
+	  
+	
 	}
 	
 

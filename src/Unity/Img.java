@@ -72,6 +72,7 @@ public class Img {
 	static String b42="42";
 	static String b54="54";
 	static String x5="X5";
+	static String x15="15";
 	static String Chinjufu="Chinjufu";
 	static String b2x="southwest";
 	static String b2x_light="southwestlight";
@@ -97,6 +98,7 @@ public class Img {
 
 	static String flagship_taiha="flag_ship_taipa";
 	static String formation="formation";
+	static String formation_ss="formation_SS";
 	static String battle_report="battle_report";
 	static String salimg="sailing";
 	static String battle_selt="battle_selt";

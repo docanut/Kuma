@@ -68,10 +68,19 @@ public class Kuma {
 			     panel2.setLayout(new GridBagLayout());
 			     panel2.setBorder(new TitledBorder("單次執行區域"));
 			     gc2.gridx = 0; gc2.gridy = 0;panel2.add(Button.Brush_flash,gc2);
-			     gc2.gridx = 1; gc2.gridy = 0;panel2.add(Button.Short_battle,gc2);
-			     gc2.gridx = 0; gc2.gridy = 1;panel2.add(Button.ExpeditionOnce,gc2);
-			     gc2.gridx = 1; gc2.gridy = 1;panel2.add(Button.Creepy,gc2);
-			     gc2.gridx = 0; gc2.gridy = 2;panel2.add(Button.QuestinItialize, gc2);
+			     gc2.gridx = 1; gc2.gridy = 0;panel2.add(Button.Brush_flash2,gc2);
+			     
+			     gc2.gridx = 0; gc2.gridy = 1;panel2.add(Button.Creepy,gc2);
+			     gc2.gridx = 1; gc2.gridy = 1;panel2.add(Button.Short_battle,gc2);
+			     
+			     gc2.gridx = 0; gc2.gridy = 2;panel2.add(Button.ExpeditionOnce,gc2);
+			     gc2.gridx = 1; gc2.gridy = 2;panel2.add(Button.QuestinItialize, gc2);
+
+			     gc2.gridx = 0; gc2.gridy = 3;panel2.add(Button.Attack32,gc2);
+			     gc2.gridx = 1; gc2.gridy = 3;panel2.add(Button.Attack33, gc2);
+
+			     gc2.gridx = 0; gc2.gridy = 4;panel2.add(Button.Attack42,gc2);
+			     //gc2.gridx = 1; gc2.gridy = 4;panel2.add(Button., gc2);
 			    
 			     frame.add(panel2);
 			     //============================================================================
